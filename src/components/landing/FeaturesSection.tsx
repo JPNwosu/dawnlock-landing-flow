@@ -1,6 +1,5 @@
-
 import React from 'react';
-import { Camera, Smartphone, BarChart3, Alarm, Shield, Zap } from 'lucide-react';
+import { Camera, Smartphone, BarChart3, AlarmClock, Shield, Zap } from 'lucide-react';
 
 export const FeaturesSection = () => {
   const features = [
@@ -17,7 +16,7 @@ export const FeaturesSection = () => {
       color: "from-purple-100 to-purple-50"
     },
     {
-      icon: <Alarm className="w-8 h-8 text-orange-500" />,
+      icon: <AlarmClock className="w-8 h-8 text-orange-500" />,
       title: "Smart Alarm Integration",
       description: "Built-in alarm system that triggers app blocking the moment you wake up.",
       color: "from-orange-100 to-orange-50"
