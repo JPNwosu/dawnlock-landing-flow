@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -28,7 +27,7 @@ export const CTASection = () => {
   };
 
   return (
-    <section className="py-20 bg-gradient-to-br from-orange-500 via-red-500 to-purple-600 relative overflow-hidden">
+    <section id="cta" className="py-20 bg-gradient-to-br from-orange-500 via-red-500 to-purple-600 relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0 bg-black/20"></div>
       <div className="absolute top-10 left-10 w-72 h-72 bg-white/10 rounded-full blur-3xl"></div>
