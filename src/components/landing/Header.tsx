@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Menu, X, Sunrise } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -43,9 +42,9 @@ export const Header = () => {
             <a href="#testimonials" className="text-gray-700 hover:text-orange-600 transition-colors">
               Reviews
             </a>
-            <Button className="bg-gradient-to-r from-orange-500 to-yellow-500 hover:from-orange-600 hover:to-yellow-600 text-white px-6 py-2 rounded-full transition-all duration-300 transform hover:scale-105">
+            <a href="#join-beta" className="bg-gradient-to-r from-orange-500 to-yellow-500 hover:from-orange-600 hover:to-yellow-600 text-white px-6 py-2 rounded-full transition-all duration-300 transform hover:scale-105">
               Join Beta
-            </Button>
+            </a>
           </nav>
 
           <button
@@ -71,9 +70,9 @@ export const Header = () => {
               <a href="#testimonials" className="text-gray-700 hover:text-orange-600 transition-colors">
                 Reviews
               </a>
-              <Button className="bg-gradient-to-r from-orange-500 to-yellow-500 hover:from-orange-600 hover:to-yellow-600 text-white px-6 py-2 rounded-full w-full">
+              <a href="#join-beta" className="bg-gradient-to-r from-orange-500 to-yellow-500 hover:from-orange-600 hover:to-yellow-600 text-white px-6 py-2 rounded-full w-full">
                 Join Beta
-              </Button>
+              </a>
             </nav>
           </div>
         )}
