@@ -3,11 +3,14 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { ChevronRight, Smartphone, Download } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
+import { supabase } from '@/lib/utils';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 
 export const CTASection = () => {
   const [email, setEmail] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
+  const [showDuplicateDialog, setShowDuplicateDialog] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -15,15 +18,26 @@ export const CTASection = () => {
     
     setIsSubmitting(true);
     
-    // Simulate API call
-    setTimeout(() => {
+    // Insert email into Supabase
+    const { error } = await supabase.from('beta_signups').insert([{ email }]);
+    if (error) {
+      if (error.message && error.message.toLowerCase().includes('duplicate')) {
+        setShowDuplicateDialog(true);
+      } else {
+        toast({
+          title: 'Something went wrong',
+          description: error.message,
+          variant: 'destructive',
+        });
+      }
+    } else {
       toast({
-        title: "Welcome to DawnLock Beta! 🎉",
+        title: 'Welcome to DawnLock Beta! 🎉',
         description: "You're on the list! We'll notify you as soon as the app is ready.",
       });
       setEmail('');
-      setIsSubmitting(false);
-    }, 1000);
+    }
+    setIsSubmitting(false);
   };
 
   return (
@@ -104,6 +118,17 @@ export const CTASection = () => {
           </div>
         </div>
       </div>
+
+      <Dialog open={showDuplicateDialog} onOpenChange={setShowDuplicateDialog}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Email Already Registered</DialogTitle>
+            <DialogDescription>
+              This email has already been signed up for beta access. Please use a different email or check your inbox for updates!
+            </DialogDescription>
+          </DialogHeader>
+        </DialogContent>
+      </Dialog>
     </section>
   );
 };
